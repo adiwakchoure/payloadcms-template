@@ -1,28 +1,36 @@
-import express from 'express';
-import payload from 'payload';
+import express from "express";
+import payload from "payload";
+import { mediaManagement } from "payload-cloudinary-plugin";
 
-require('dotenv').config();
+require("dotenv").config();
 const app = express();
+app.use(
+	mediaManagement({
+		api_key: process.env.CLOUDINARY_API_KEY,
+		cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+		api_secret: process.env.CLOUDINARY_API_SECRET,
+	})
+);
 
 // Redirect root to Admin panel
-app.get('/', (_, res) => {
-  res.redirect('/admin');
+app.get("/", (_, res) => {
+	res.redirect("/admin");
 });
 
 const start = async () => {
-  // Initialize Payload
-  await payload.init({
-    secret: process.env.PAYLOAD_SECRET,
-    mongoURL: process.env.MONGODB_URI,
-    express: app,
-    onInit: async () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
-    },
-  })
+	// Initialize Payload
+	await payload.init({
+		secret: process.env.PAYLOAD_SECRET,
+		mongoURL: process.env.MONGODB_URI,
+		express: app,
+		onInit: async () => {
+			payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+		},
+	});
 
-  // Add your own express routes here
+	// Add your own express routes here
 
-  app.listen(3000);
-}
+	app.listen(3000);
+};
 
 start();
