@@ -1,10 +1,13 @@
 import { GlobalConfig } from "payload/types";
-
+import netlifyWebhook from "./hooks/netlifyWebhook";
 const Portfolio: GlobalConfig = {
 	slug: "portfolio",
 	label: "Portfolio",
 	access: {
 		read: (): boolean => true,
+	},
+	hooks: {
+		afterChange: [netlifyWebhook],
 	},
 	fields: [
 		{
@@ -35,7 +38,6 @@ const Portfolio: GlobalConfig = {
 			label: "Sobre mim",
 			type: "richText",
 		},
-
 		{
 			name: "projects",
 			admin: {

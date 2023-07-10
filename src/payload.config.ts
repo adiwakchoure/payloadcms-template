@@ -5,6 +5,7 @@ import Article from "./collections/Article";
 import Category from "./collections/Category";
 import Media from "./collections/Media";
 import Portfolio from "./globals/Portfolio";
+import afterChangeHook from "./globals/hooks/netlifyWebhook";
 
 dotenv.config();
 
