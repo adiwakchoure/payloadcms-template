@@ -5,13 +5,13 @@ import Article from "./collections/Article";
 import Category from "./collections/Category";
 import Media from "./collections/Media";
 import Portfolio from "./globals/Portfolio";
-import afterChangeHook from "./globals/hooks/netlifyWebhook";
+import AboutBlog from "./globals/AboutBlog";
 
 dotenv.config();
 
 export default buildConfig({
 	serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
 	collections: [Article, Media, Category],
-	globals: [Portfolio],
+	globals: [Portfolio, AboutBlog],
 	plugins: [cloudinaryPlugin()],
 });
