@@ -1,5 +1,5 @@
 import { GlobalConfig } from "payload/types";
-import netlifyWebhook from "./hooks/netlifyWebhook";
+import blogWebHook from "./hooks/blogWebHook";
 const AboutBlog: GlobalConfig = {
 	slug: "aboutblog",
 	label: "Página 'Sobre' do Blog",
@@ -7,7 +7,7 @@ const AboutBlog: GlobalConfig = {
 		read: (): boolean => true,
 	},
 	hooks: {
-		afterChange: [netlifyWebhook],
+		afterChange: [blogWebHook],
 	},
 	fields: [
 		{

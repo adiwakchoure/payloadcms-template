@@ -1,6 +1,7 @@
 import { CollectionConfig } from "payload/types";
 import { CategoryType } from "./Category";
 import formatSlug from "../utilities/formatSlug";
+import blogWebHook from "../globals/hooks/blogWebHook";
 
 export type ArticleType = {
 	title: string;
@@ -27,6 +28,9 @@ const Article: CollectionConfig = {
 	},
 	access: {
 		read: (): boolean => true,
+	},
+	hooks: {
+		afterChange: [blogWebHook],
 	},
 	fields: [
 		{
@@ -87,24 +91,6 @@ const Article: CollectionConfig = {
 					},
 				},
 			],
-		},
-		{
-			name: "status",
-			type: "select",
-			options: [
-				{
-					value: "draft",
-					label: "Draft",
-				},
-				{
-					value: "published",
-					label: "Published",
-				},
-			],
-			defaultValue: "draft",
-			admin: {
-				position: "sidebar",
-			},
 		},
 		{
 			name: "slug",

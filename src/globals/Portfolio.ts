@@ -1,5 +1,5 @@
 import { GlobalConfig } from "payload/types";
-import netlifyWebhook from "./hooks/netlifyWebhook";
+import netlifyWebhook from "./hooks/portfolioWebhook";
 const Portfolio: GlobalConfig = {
 	slug: "portfolio",
 	label: "Portfolio",
