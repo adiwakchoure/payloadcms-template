@@ -83,6 +83,25 @@ const Portfolio: GlobalConfig = {
 					type: "textarea",
 					required: true,
 				},
+				{
+					name: "tags",
+					label: "Tags",
+					type: "array",
+					required: false,
+					minRows: 0,
+					labels: {
+						singular: "Tag",
+						plural: "Tags",
+					},
+					fields: [
+						{
+							name: "name",
+							label: "Nome",
+							type: "text",
+							required: true,
+						},
+					],
+				},
 			],
 		},
 		{
