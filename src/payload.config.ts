@@ -14,6 +14,7 @@ import Media from "./collections/Media";
 import AboutBlog from "./globals/AboutBlog";
 import Portfolio from "./globals/Portfolio";
 import { CodeBlock } from "./blocks/CodeBlock";
+import { Icon } from "../src/components/Icon";
 
 dotenv.config();
 
@@ -21,6 +22,11 @@ export default buildConfig({
 	serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
 	admin: {
 		bundler: webpackBundler(),
+		components: {
+			graphics: {
+				Logo: Icon,
+			},
+		},
 	},
 	collections: [Article, Media, Category],
 	globals: [Portfolio, AboutBlog],
