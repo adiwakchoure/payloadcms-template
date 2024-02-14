@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import { CategoryType } from "./Category";
-import formatSlug from "../utilities/formatSlug";
+import formatSlug from "../globals/hooks/formatSlug";
 import blogWebHook from "../globals/hooks/blogWebHook";
 
 export type ArticleType = {
@@ -29,9 +29,9 @@ const Article: CollectionConfig = {
 	access: {
 		read: (): boolean => true,
 	},
-	hooks: {
-		afterChange: [blogWebHook],
-	},
+	// hooks: {
+	// 	afterChange: [blogWebHook],
+	// },
 	fields: [
 		{
 			name: "title",
