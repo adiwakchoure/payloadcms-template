@@ -31,7 +31,7 @@ export default buildConfig({
 	},
 	collections: [Article, Media, Category],
 	globals: [Portfolio, AboutBlog],
-	plugins: [cloudinaryPlugin()],
+	plugins: [cloudinaryPlugin() as any],
 	editor: lexicalEditor({
 		features: ({ defaultFeatures }) => [
 			...defaultFeatures,
