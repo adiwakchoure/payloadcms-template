@@ -1,25 +1,24 @@
 import { FieldHook } from "payload/types";
-
-const format = (val: string): string =>
-  val
-    .replace(/ /g, "-")
-    .replace(/[^\w-/]+/g, "")
-    .toLowerCase();
+import slugify from "slugify";
 
 const formatSlug =
-  (fallback: string): FieldHook =>
-  ({ value, originalDoc, data }) => {
-    if (typeof value === "string") {
-      return format(value);
-    }
-    const fallbackData =
-      (data && data[fallback]) || (originalDoc && originalDoc[fallback]);
+	(fallback: string): FieldHook =>
+	({ value, originalDoc, data }) => {
+		if (typeof value === "string") {
+			return slugify(value, {
+				locale: "br",
+			});
+		}
+		const fallbackData =
+			(data && data[fallback]) || (originalDoc && originalDoc[fallback]);
 
-    if (fallbackData && typeof fallbackData === "string") {
-      return format(fallbackData);
-    }
+		if (fallbackData && typeof fallbackData === "string") {
+			return slugify(fallbackData, {
+				locale: "br",
+			});
+		}
 
-    return value;
-  };
+		return value;
+	};
 
 export default formatSlug;

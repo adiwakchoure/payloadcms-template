@@ -64,7 +64,7 @@ const Article: CollectionConfig = {
 			type: "group",
 			fields: [
 				{
-					name: "title",
+					name: "seotitle",
 					label: "Título do Navegador",
 					type: "text",
 					admin: {
